@@ -1,9 +1,16 @@
-import { ActionTypes, IFetchNowPlayingMoviesActions, INowPlayingMoviesState } from './types';
+import { ActionTypes, IFetchNowPlayingMoviesActions } from './types';
 import { API_STATES } from '../../constants/AppConstants';
+import { IMovie, ISearch } from '../../models/model';
+
+export interface INowPlayingMoviesState {
+  nowPlayingMovies: ISearch<IMovie> | null;
+  apiState: API_STATES | null;
+  nowPlayingSearchPage: number;
+}
 
 const initialState: INowPlayingMoviesState = {
   nowPlayingMovies: null,
-  fetchStatus: null,
+  apiState: null,
   nowPlayingSearchPage: 1,
 };
 
@@ -12,12 +19,12 @@ function reducer(
   action: IFetchNowPlayingMoviesActions
 ): INowPlayingMoviesState {
   switch (action.type) {
-    case ActionTypes.FETCH_NOW_PLAYING_MOVIES_START:
+    case ActionTypes.GET_NOW_PLAYING_MOVIES:
       return {
         ...state,
-        fetchStatus: API_STATES.LOADING,
+        apiState: API_STATES.LOADING,
       };
-    case ActionTypes.FETCH_NOW_PLAYING_MOVIES_SUCCESS:
+    case ActionTypes.NOW_PLAYING_MOVIES_SUCCESS:
       const { shouldConcat } = action.payload;
 
       if (shouldConcat && state.nowPlayingMovies) {
@@ -27,19 +34,19 @@ function reducer(
             ...action.payload.movies,
             results: [...state.nowPlayingMovies.results, ...action.payload.movies.results],
           },
-          fetchStatus: API_STATES.SUCCESS,
+          apiState: API_STATES.SUCCESS,
         };
       }
 
       return {
         ...state,
         nowPlayingMovies: action.payload.movies,
-        fetchStatus: API_STATES.SUCCESS,
+        apiState: API_STATES.SUCCESS,
       };
-    case ActionTypes.FETCH_NOW_PLAYING_MOVIES_FAILURE:
+    case ActionTypes.NOW_PLAYING_MOVIES_FAILED:
       return {
         ...state,
-        fetchStatus: API_STATES.FAILED,
+        apiState: API_STATES.FAILED,
       };
     case ActionTypes.SET_NOW_PLAYING_SEARCH_PAGE:
       return {

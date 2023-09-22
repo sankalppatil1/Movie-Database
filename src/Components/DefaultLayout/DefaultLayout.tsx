@@ -1,14 +1,16 @@
+import { Box } from "@mui/material";
 import React from "react";
 import { Outlet } from "react-router-dom";
+import Header from "../molecules/Header/Header";
 
 function DefaultLayout() {
   return (
     <>
-      <div>Header</div>
-      <div>
+      <Header/>
+      <Box>
         <Outlet />
-      </div>
-      <div>Footer</div>
+      </Box>
+      <Box>Footer</Box>
     </>
   );
 }

@@ -1,28 +1,22 @@
 import { Action } from 'redux';
-import { API_STATES } from '../../constants/AppConstants';
 import { IMovie, ISearch } from '../../models/model';
-
-export interface INowPlayingMoviesState {
-  nowPlayingMovies: ISearch<IMovie> | null;
-  fetchStatus: API_STATES | null;
-  nowPlayingSearchPage: number;
-}
+import { INowPlayingMoviesState } from './reducer';
 
 export enum ActionTypes {
-  FETCH_NOW_PLAYING_MOVIES_START = '[movie] fetch now playing movies start',
-  FETCH_NOW_PLAYING_MOVIES_SUCCESS = '[movie] fetch now playing movies success',
-  FETCH_NOW_PLAYING_MOVIES_FAILURE = '[movie] fetch now playing movies failure',
+  GET_NOW_PLAYING_MOVIES = 'GET_NOW_PLAYING_MOVIES',
+  NOW_PLAYING_MOVIES_SUCCESS = 'NOW_PLAYING_MOVIES_SUCCESS',
+  NOW_PLAYING_MOVIES_FAILED = 'NOW_PLAYING_MOVIES_FAILED',
 
   SET_NOW_PLAYING_SEARCH_PAGE = '[movie] set now playing search page',
   CLEAR_NOW_PLAYING_SEARCH_PAGE = '[movie] clear now playing search page',
 }
 
 export interface IFetchNowPlayingMoviesStartAction extends Action {
-  type: ActionTypes.FETCH_NOW_PLAYING_MOVIES_START;
+  type: ActionTypes.GET_NOW_PLAYING_MOVIES;
 }
 
 export interface IFetchNowPlayingMoviesSuccessAction extends Action {
-  type: ActionTypes.FETCH_NOW_PLAYING_MOVIES_SUCCESS;
+  type: ActionTypes.NOW_PLAYING_MOVIES_SUCCESS;
   payload: {
     movies: ISearch<IMovie>;
     shouldConcat?: boolean;
@@ -30,7 +24,7 @@ export interface IFetchNowPlayingMoviesSuccessAction extends Action {
 }
 
 export interface IFetchNowPlayingMoviesFailureAction extends Action {
-  type: ActionTypes.FETCH_NOW_PLAYING_MOVIES_FAILURE;
+  type: ActionTypes.NOW_PLAYING_MOVIES_FAILED;
 }
 
 export interface IClearNowPlayingSearchPage extends Action {

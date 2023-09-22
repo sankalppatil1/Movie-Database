@@ -4,7 +4,7 @@ import {
   IFetchNowPlayingMoviesStartAction,
   ISetNowPlayingSearchPage,
 } from "./types";
-import TMDbService from "../../services/tmdbService";
+import TMDbService from "../../services/service";
 import {
   fetchNowPlayingMoviesFailure,
   fetchNowPlayingMoviesSuccess,
@@ -36,7 +36,7 @@ function* fetchNowPlayingMoviesWithPageSaga(action: ISetNowPlayingSearchPage) {
   yield saveNowPlayingMovies(page, true);
 }
 
-export default function* saga() {
+export default function* nowPlayingSaga() {
   yield all([
     debounce(
       150,
@@ -44,7 +44,7 @@ export default function* saga() {
       fetchNowPlayingMoviesWithPageSaga
     ),
     takeLatest(
-      ActionTypes.FETCH_NOW_PLAYING_MOVIES_START,
+      ActionTypes.GET_NOW_PLAYING_MOVIES,
       fetchNowPlayingMoviesSaga
     ),
   ]);
