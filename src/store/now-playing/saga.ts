@@ -1,9 +1,6 @@
 import { all, call, debounce, put, takeLatest } from "redux-saga/effects";
-import {
-  ActionTypes,
-  IFetchNowPlayingMoviesStartAction,
-  ISetNowPlayingSearchPage,
-} from "./types";
+import { NowPlayingActionTypes } from "../../constants/ActionConstants";
+
 import TMDbService from "../../services/service";
 import {
   fetchNowPlayingMoviesFailure,
@@ -26,11 +23,11 @@ function* saveNowPlayingMovies(page = 1, shouldConcat = false): any {
   }
 }
 
-function* fetchNowPlayingMoviesSaga(action: IFetchNowPlayingMoviesStartAction) {
+function* fetchNowPlayingMoviesSaga(action: {type: string, payload?: any}) {
   yield saveNowPlayingMovies(1, false);
 }
 
-function* fetchNowPlayingMoviesWithPageSaga(action: ISetNowPlayingSearchPage) {
+function* fetchNowPlayingMoviesWithPageSaga(action: {type: string, payload?: any}) {
   const page = action.payload;
 
   yield saveNowPlayingMovies(page, true);
@@ -40,11 +37,11 @@ export default function* nowPlayingSaga() {
   yield all([
     debounce(
       150,
-      ActionTypes.SET_NOW_PLAYING_SEARCH_PAGE,
+      NowPlayingActionTypes.SET_NOW_PLAYING_SEARCH_PAGE,
       fetchNowPlayingMoviesWithPageSaga
     ),
     takeLatest(
-      ActionTypes.GET_NOW_PLAYING_MOVIES,
+      NowPlayingActionTypes.GET_NOW_PLAYING_MOVIES,
       fetchNowPlayingMoviesSaga
     ),
   ]);

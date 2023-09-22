@@ -1,4 +1,4 @@
-import { ActionTypes, IFetchNowPlayingMoviesActions } from './types';
+import { NowPlayingActionTypes } from '../../constants/ActionConstants';
 import { API_STATES } from '../../constants/AppConstants';
 import { IMovie, ISearch } from '../../models/model';
 
@@ -16,15 +16,15 @@ const initialState: INowPlayingMoviesState = {
 
 function reducer(
   state: INowPlayingMoviesState = initialState,
-  action: IFetchNowPlayingMoviesActions
+  action: {type: string, payload?: any}
 ): INowPlayingMoviesState {
   switch (action.type) {
-    case ActionTypes.GET_NOW_PLAYING_MOVIES:
+    case NowPlayingActionTypes.GET_NOW_PLAYING_MOVIES:
       return {
         ...state,
         apiState: API_STATES.LOADING,
       };
-    case ActionTypes.NOW_PLAYING_MOVIES_SUCCESS:
+    case NowPlayingActionTypes.NOW_PLAYING_MOVIES_SUCCESS:
       const { shouldConcat } = action.payload;
 
       if (shouldConcat && state.movies) {
@@ -43,20 +43,15 @@ function reducer(
         movies: action.payload.movies,
         apiState: API_STATES.SUCCESS,
       };
-    case ActionTypes.NOW_PLAYING_MOVIES_FAILED:
+    case NowPlayingActionTypes.NOW_PLAYING_MOVIES_FAILED:
       return {
         ...state,
         apiState: API_STATES.FAILED,
       };
-    case ActionTypes.SET_NOW_PLAYING_SEARCH_PAGE:
+    case NowPlayingActionTypes.SET_NOW_PLAYING_SEARCH_PAGE:
       return {
         ...state,
         searchPage: action.payload,
-      };
-    case ActionTypes.CLEAR_NOW_PLAYING_SEARCH_PAGE:
-      return {
-        ...state,
-        searchPage: 1,
       };
     default:
       return state;

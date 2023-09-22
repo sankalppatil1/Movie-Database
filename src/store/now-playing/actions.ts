@@ -1,35 +1,37 @@
+import { NowPlayingActionTypes } from '../../constants/ActionConstants';
 import { IMovie, ISearch } from '../../models/model';
-import { ActionTypes } from './types';
+
 
 
 export function fetchNowPlayingMoviesStart() {
   return {
-    type: ActionTypes.GET_NOW_PLAYING_MOVIES,
+    type: NowPlayingActionTypes.GET_NOW_PLAYING_MOVIES,
   };
 }
 
 export function fetchNowPlayingMoviesSuccess(payload: { movies: ISearch<IMovie>; shouldConcat?: boolean }) {
   return {
-    type: ActionTypes.NOW_PLAYING_MOVIES_SUCCESS,
+    type: NowPlayingActionTypes.NOW_PLAYING_MOVIES_SUCCESS,
     payload,
   };
 }
 
 export function fetchNowPlayingMoviesFailure() {
   return {
-    type: ActionTypes.NOW_PLAYING_MOVIES_FAILED,
+    type: NowPlayingActionTypes.NOW_PLAYING_MOVIES_FAILED,
   };
 }
 
 export function clearNowPlayingSearchPage() {
   return {
-    type: ActionTypes.CLEAR_NOW_PLAYING_SEARCH_PAGE,
+    type: NowPlayingActionTypes.SET_NOW_PLAYING_SEARCH_PAGE,
+    payload: 1
   };
 }
 
 export function setNowPlayingSearchPage(payload: number) {
   return {
-    type: ActionTypes.SET_NOW_PLAYING_SEARCH_PAGE,
+    type: NowPlayingActionTypes.SET_NOW_PLAYING_SEARCH_PAGE,
     payload,
   };
 }
