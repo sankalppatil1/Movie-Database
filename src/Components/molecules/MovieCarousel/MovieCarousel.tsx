@@ -1,8 +1,9 @@
 import React from "react";
 import { IMovie } from "../../../models/model";
 import Carousel from "../Carousel/Carousel";
-import HeaderLink from "../HeaderLink/HeaderLink";
+import HeaderLink from "../../atoms/HeaderLink/HeaderLink";
 import MovieCard from "../MovieCard/MovieCard";
+import { MOVIE_CARD_WIDTH } from "../../../constants/AppConstants";
 
 interface MovieCarouselProps {
     movieData: IMovie[]
@@ -18,7 +19,7 @@ function MovieCarousel(props: MovieCarouselProps) {
       />
       <Carousel>
         {movieData.map((data) => (
-          <MovieCard key={data.id} movieData={data} />
+          <MovieCard key={data.id} movieData={data} cardWidthInPx={MOVIE_CARD_WIDTH.HOME_PAGE}/>
         ))}
       </Carousel>
     </>

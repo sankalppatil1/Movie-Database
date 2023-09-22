@@ -33,7 +33,7 @@ export interface IClearNowPlayingSearchPage extends Action {
 
 export interface ISetNowPlayingSearchPage extends Action {
   type: ActionTypes.SET_NOW_PLAYING_SEARCH_PAGE;
-  payload: INowPlayingMoviesState['nowPlayingSearchPage'];
+  payload: INowPlayingMoviesState['searchPage'];
 }
 
 export type IFetchNowPlayingMoviesActions =

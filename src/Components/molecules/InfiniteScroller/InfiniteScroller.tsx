@@ -7,10 +7,11 @@ import MovieCard from "../MovieCard/MovieCard";
 interface InfiniteScrollerProps {
   fetchData: () => void;
   movieData: IMovie[];
+  cardWidthInPx: number;
 }
 
 function InfiniteScroller(props: InfiniteScrollerProps) {
-  const { fetchData, movieData } = props;
+  const { fetchData, movieData, cardWidthInPx } = props;
   return (
     <InfiniteScroll
       dataLength={movieData.length} //This is important field to render the next data
@@ -23,9 +24,9 @@ function InfiniteScroller(props: InfiniteScrollerProps) {
         </p>
       }
     >
-      <Box sx={{ display: "flex", flexWrap: 'wrap', columnGap: '10px' }}>
+      <Box sx={{ display: "flex", flexWrap: 'wrap', justifyContent: 'space-evenly', rowGap: '30px' }}>
         {movieData.map((data) => (
-          <MovieCard key={data.id} movieData={data} />
+          <MovieCard key={data.id} movieData={data} cardWidthInPx={cardWidthInPx}/>
         ))}
       </Box>
     </InfiniteScroll>

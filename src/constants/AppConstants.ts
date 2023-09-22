@@ -10,5 +10,11 @@ export const HOME_PAGE_TABS_DATA = {
 
 
 export const ROUTE_CONSTANTS = {
-  NOW_PLAYING : 'now-playing'
+  NOW_PLAYING : '/now-playing',
+  HOME : '/'
+}
+
+export const MOVIE_CARD_WIDTH = {
+  HOME_PAGE: 200,
+  CATEGORY_PAGE: 300
 }

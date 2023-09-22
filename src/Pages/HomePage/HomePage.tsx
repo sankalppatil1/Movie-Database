@@ -10,7 +10,7 @@ import { IMainState } from "../../store/store";
 function HomePage() {
   const dispatch = useDispatch();
   const nowPlayingMovies: IMovie[] | undefined = useSelector(
-    (state: IMainState) => state.nowPlayingMovies.nowPlayingMovies?.results
+    (state: IMainState) => state.nowPlayingMovies.movies?.results
   );
 
   useEffect(() => {

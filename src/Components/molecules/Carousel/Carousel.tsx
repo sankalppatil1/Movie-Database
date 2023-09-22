@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import { Box, SvgIcon } from "@mui/material";
-import { LeftArrowIcon, RightArrowIcon } from "../../../assets/Icons";
+import { ArrowBack, ArrowForward } from "@mui/icons-material";
 
 export interface CarouselInterface {
   children?: any;
@@ -11,9 +11,8 @@ export interface CarouselInterface {
 
 const Carousel = ({
   children,
-  scrollWidthWeb = 400,
-  scrollWidthMobile = 330,
-  toggleArrow = 0,
+  scrollWidthWeb = 200,
+  scrollWidthMobile = 200,
 }: CarouselInterface) => {
   const carouselEl = useRef(null);
   const arrowStyles = {
@@ -21,16 +20,6 @@ const Carousel = ({
     height: "24px",
     verticalAlign: "middle",
   };
-  const [isLeftDissabled, setIsLeftDissabled] = useState(true);
-  const [isRightDissabled, setIsRightDissabled] = useState(false);
-
-  useEffect(() => {
-    const element: any = carouselEl.current;
-    setIsLeftDissabled(
-      element.scrollLeft >= element.scrollWidth - element.clientWidth
-    );
-    setIsRightDissabled(element.scrollLeft <= 0);
-  }, [toggleArrow]);
 
   const scrollHandler = (isLeftScroll: boolean) => {
     const width: number =
@@ -40,19 +29,11 @@ const Carousel = ({
       ? element.scrollLeft - width
       : element.scrollLeft + width;
     element.scrollLeft = scrollValue;
-
-    if (!isLeftDissabled || !isRightDissabled) {
-      setIsLeftDissabled(
-        scrollValue * -1 > element.scrollWidth - element.clientWidth
-      );
-      setIsRightDissabled(scrollValue * -1 <= 0);
-    }
   };
 
   return (
     <>
       <Box
-        data-testid={"carousel"}
         sx={(theme) => ({
           display: "flex",
           flexDirection: "row",
@@ -60,10 +41,8 @@ const Carousel = ({
           width: "100%",
           overflow: "auto",
           scrollBehavior: "smooth",
-          paddingBottom: "20px",
           [theme.breakpoints.up("md")]: {
             gap: "20px",
-            maxWidth: "1180px",
             overflow: "hidden",
           },
           "&::-webkit-scrollbar": {
@@ -87,37 +66,29 @@ const Carousel = ({
       >
         <SvgIcon
           inheritViewBox
-          data-testid={
-            isLeftDissabled ? "carouselLeftArrowDisabled" : "carouselLeftArrow"
-          }
           onClick={scrollHandler.bind(null, true)}
           sx={{
             ...arrowStyles,
             "&.MuiSvgIcon-root": {
               ">path": {
-                fill: `${isLeftDissabled ? "grey" : "yellow"}`,
+                fill: `yellow`,
               },
             },
           }}
-          component={LeftArrowIcon}
+          component={ArrowBack}
         />
         <SvgIcon
           inheritViewBox
           onClick={scrollHandler.bind(null, false)}
-          data-testid={
-            isRightDissabled
-              ? "carouselRightArrowDisabled"
-              : "carouselRightArrow"
-          }
           sx={{
             ...arrowStyles,
             "&.MuiSvgIcon-root": {
               ">path": {
-                fill: `${isRightDissabled ? "grey" : "yellow"}`,
+                fill: `yellow`,
               },
             },
           }}
-          component={RightArrowIcon}
+          component={ArrowForward}
         />
       </Box>
     </>

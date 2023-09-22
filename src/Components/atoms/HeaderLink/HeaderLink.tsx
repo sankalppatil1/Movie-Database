@@ -11,14 +11,14 @@ function HeaderLink(props: HeaderLinkProps) {
   return (
     <Box sx={{
         display: 'flex',
-        justifyContent: 'space-between',
-        padding: '0px 10px'
+        justifyContent: 'flex-start',
+        padding: '10px'
 
     }}>
       <Typography>{headerDetails.title}</Typography>{" "}
       <Link
         to={headerDetails.viewMoreLink}
-        style={{ textDecoration: "none", textTransform: "uppercase", color: 'yellow' }}
+        style={{ textDecoration: "none", textTransform: "uppercase", color: 'yellow', marginInlineStart: '20px' }}
       >
         VIEW MORE
       </Link>

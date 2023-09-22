@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import "./App.css";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import DefaultLayout from "./components/DefaultLayout/DefaultLayout";
+import DefaultLayout from "./components/molecules/DefaultLayout/DefaultLayout";
 import HomePage from "./pages/HomePage/HomePage";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
@@ -16,7 +16,7 @@ function App() {
         <Routes>
           <Route element={<DefaultLayout />}>
             <Route path="/" element={<HomePage />} />
-            <Route path={`/${ROUTE_CONSTANTS.NOW_PLAYING}`} element={<NowPlayingPage />} />
+            <Route path={ROUTE_CONSTANTS.NOW_PLAYING} element={<NowPlayingPage />} />
           </Route>
         </Routes>
       </Suspense>

@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import React from "react";
 import { Outlet } from "react-router-dom";
-import Header from "../molecules/Header/Header";
+import Header from "../Header/Header";
 
 function DefaultLayout() {
   return (
