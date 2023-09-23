@@ -37,7 +37,7 @@ function SearchPage() {
           },
         }}
       />
-      <CategoryPage fetchData={fetchMoreSearchedMovies} movies={movies} apiState={apiState} category={HOME_PAGE_TABS_DATA.SEARCH.title}/>
+      <CategoryPage fetchData={fetchMoreSearchedMovies} movies={movies} apiState={apiState} category={`${HOME_PAGE_TABS_DATA.SEARCH.title}ed`}/>
 
     </>
   );
