@@ -20,7 +20,7 @@ function KeyValueTable(props: { keyValueData: KeyValueField[] }) {
     >
       {keyValueData.map((data: KeyValueField) => {
         return data.value ? (
-          <Box sx={{ display: "flex", mb: "10px" }}>
+          <Box key={data.key} sx={{ display: "flex", mb: "10px" }}>
             <Box sx={{ width: "30%" }}>{data.key}</Box>
             <Box
               onClick={data.redirection ? data.redirection : undefined}
