@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import NoMoviesCard from "../../components/atoms/NoMoviesCard/NoMoviesCard";
+import NoMoviesCard from "../../components/atoms/NoDataCard/NoDataCard";
 import InfiniteScroller from "../../components/molecules/InfiniteScroller/InfiniteScroller";
 import SkeletonLoader from "../../components/atoms/SkeletonLoader/SkeletonLoader";
 import { API_STATES, MOVIE_CARD_WIDTH } from "../../constants/AppConstants";

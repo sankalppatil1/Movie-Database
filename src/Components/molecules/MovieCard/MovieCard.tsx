@@ -1,5 +1,5 @@
 import { Box, IconButton } from "@mui/material";
-import React from "react";
+import React, { BaseSyntheticEvent } from "react";
 import { IMovie } from "../../../models/model";
 import { API_IMAGE_PATH } from "../../../services/service";
 
@@ -13,6 +13,8 @@ import {
   deleteFavoriteMovie,
   saveFavoriteMovie,
 } from "../../../store/favorites/actions";
+import { useNavigate } from "react-router-dom";
+import { ROUTE_CONSTANTS } from "../../../constants/AppConstants";
 
 interface MovieCardProps {
   movieData: IMovie;
@@ -22,6 +24,7 @@ interface MovieCardProps {
 function MovieCard(props: MovieCardProps) {
   const { movieData, cardWidthInPx } = props;
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const genreList = useSelector((state: IMainState) => state.genreList.genres);
   const favouriteMovies = useSelector(
     (state: IMainState) => state.favouriteMovies.favoriteMovies
@@ -30,7 +33,8 @@ function MovieCard(props: MovieCardProps) {
     ? getFormattedGenreList(movieData.genre_ids, genreList)
     : "";
   const isMovieFavorite = isFavorite(favouriteMovies, movieData.id);
-  const favouriteBtnHandler = () => {
+  const favouriteBtnHandler = (event: BaseSyntheticEvent) => {
+    event.stopPropagation();
     if (!isMovieFavorite) {
       dispatch(saveFavoriteMovie(movieData));
     } else {
@@ -44,7 +48,12 @@ function MovieCard(props: MovieCardProps) {
       sx={{
         width: `${cardWidthInPx}px`,
         position: "relative",
+        zIndex: "2",
+        cursor: 'pointer',
       }}
+      onClick={() =>
+        navigate(`${ROUTE_CONSTANTS.MOVIE_DETAILS}/${movieData.id}`)
+      }
     >
       <Box
         component="img"
@@ -60,7 +69,12 @@ function MovieCard(props: MovieCardProps) {
         genreListFormatted={genreListFormatted}
       />
       <IconButton
-        sx={{ position: "absolute", color: "yellow", right: "0px" }}
+        sx={{
+          position: "absolute",
+          color: "yellow",
+          right: "0px",
+          zIndex: "4",
+        }}
         onClick={favouriteBtnHandler}
       >
         {isMovieFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}

@@ -13,6 +13,7 @@ import UpcomingMoviesPage from "./pages/UpcomingMoviesPage/UpcomingMoviesPage";
 import { ResetScroll } from "./components/molecules/ResetScroll/ResetScroll";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import FavouritePage from "./pages/FavouritePage/FavouritePage";
+import MovieDetailsPage from "./pages/MovieDetailsPage/MovieDetailsPage";
 
 function App() {
   return (
@@ -46,6 +47,10 @@ function App() {
                 <Route
                   path={ROUTE_CONSTANTS.FAVOURITE}
                   element={<FavouritePage />}
+                />
+                <Route
+                  path={`${ROUTE_CONSTANTS.MOVIE_DETAILS}/:id`}
+                  element={<MovieDetailsPage />}
                 />
               </Route>
             </Routes>

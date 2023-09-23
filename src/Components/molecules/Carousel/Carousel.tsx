@@ -16,14 +16,18 @@ const Carousel = ({
 }: CarouselInterface) => {
   const carouselEl = useRef(null);
   const arrowStyles = {
+    position: "absolute",
     opacity: 0.7,
-    height: "50%",
-    backgroundColor: "black",
+    height: "30%",
+    boxShadow: "yellow",
+    backgroundColor: "yellow",
     borderRadius: "8px",
-    border: "1px solid yellow",
+    border: "1px solid black",
+    zIndex: "3",
+    cursor: "pointer",
     "&.MuiSvgIcon-root": {
       ">path": {
-        fill: `yellow`,
+        fill: `black`,
       },
     },
   };
@@ -61,35 +65,24 @@ const Carousel = ({
       >
         {children}
       </Box>
-      <Box
-        sx={(theme) => ({
-          width: "100%",
-          display: "flex",
-          gap: "32px",
-          cursor: "pointer",
-          position: "absolute",
-          justifyContent: "space-between",
-          height: "50%",
-          alignItems: "center",
-        })}
-      >
-        <SvgIcon
-          inheritViewBox
-          onClick={scrollHandler.bind(null, true)}
-          sx={{
-            ...arrowStyles,
-          }}
-          component={ArrowBack}
-        />
-        <SvgIcon
-          inheritViewBox
-          onClick={scrollHandler.bind(null, false)}
-          sx={{
-            ...arrowStyles,
-          }}
-          component={ArrowForward}
-        />
-      </Box>
+
+      <SvgIcon
+        inheritViewBox
+        onClick={scrollHandler.bind(null, true)}
+        sx={{
+          ...arrowStyles,
+        }}
+        component={ArrowBack}
+      />
+      <SvgIcon
+        inheritViewBox
+        onClick={scrollHandler.bind(null, false)}
+        sx={{
+          ...arrowStyles,
+          right: "0px",
+        }}
+        component={ArrowForward}
+      />
     </Box>
   );
 };

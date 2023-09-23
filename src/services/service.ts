@@ -1,4 +1,4 @@
-import { IMovie, ISearch } from "../models/model";
+import { IMovie, IMovieDetails, ISearch } from "../models/model";
 
 export const API_IMAGE_PATH = " https://image.tmdb.org/t/p/original";
 export default class ApiService {
@@ -44,6 +44,12 @@ export default class ApiService {
   public getContentBySearchQuery = async (query: string, page = 1) => {
     return this.fetchJSON(
       `${this.API_BASE}search/movie?api_key=${this.API_KEY}&query=${query}&page=${page}`
+    );
+  };
+
+  public getMovieDetails = async (id: number): Promise<IMovieDetails> => {
+    return this.fetchJSON(
+      `${this.API_BASE}movie/${id}?api_key=${this.API_KEY}`
     );
   };
 }

@@ -11,6 +11,7 @@ export const ROUTE_CONSTANTS = {
   UPCOMING: "/upcoming",
   SEARCH: "/search",
   FAVOURITE: "/favourite",
+  MOVIE_DETAILS: "/movie-details",
   HOME: "/",
 };
 

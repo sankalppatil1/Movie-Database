@@ -1,12 +1,6 @@
 export interface ISearch<T> {
   page: number;
   results: Array<T>;
-  total_pages: number;
-  total_results: number;
-  dates?: {
-    maximum: Date;
-    minimum: Date;
-  };
 }
 
 export interface IMovie {
@@ -17,32 +11,13 @@ export interface IMovie {
   original_language: string;
   original_title: string;
   overview: string;
-  popularity: number;
   poster_path: string;
   release_date: string;
   runtime: number;
   title: string;
-  video: boolean;
   vote_average: number;
   vote_count: number;
 }
-
-export interface IImages {
-  id: number;
-  backdrops: IImage[];
-  posters: IImage[];
-}
-
-export interface IImage {
-  aspect_ratio: number;
-  file_path: string;
-  height: number;
-  iso_639_1: string | null;
-  vote_average: number;
-  vote_count: number;
-  width: number;
-}
-
 export interface IGenre {
   id: number;
   name: string;
@@ -51,4 +26,13 @@ export interface IGenre {
 export interface ActionType {
   type: string;
   payload?: any;
+}
+
+export interface IMovieDetails extends IMovie {
+  budget: number;
+  genres: IGenre[];
+  revenue: number;
+  status: string;
+  tagline: string;
+  homepage: string;
 }

@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import React from "react";
 
-function NoMoviesCard() {
+function NoDataCard() {
   return (
     <Box
       sx={{
@@ -13,9 +13,9 @@ function NoMoviesCard() {
         alignItems: "center",
       }}
     >
-      No Movies to Display...
+      No Data to Display...
     </Box>
   );
 }
 
-export default NoMoviesCard;
+export default NoDataCard;

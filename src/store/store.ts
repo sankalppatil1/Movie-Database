@@ -17,6 +17,9 @@ import upcomingMoviesReducer, {
 import genreReducer, { IGenresState } from "./genres/reducer";
 import searchReducer, { ISearchState } from "./search/reducer";
 import favouriteMoviesReducer, { IFavoritesState } from "./favorites/reducer";
+import movieDetailsReducer, {
+  IMovieDetailsState,
+} from "./movie-details/reducer";
 
 const sagaMiddleware = createSagaMiddleware();
 const rootReducers = combineReducers({
@@ -27,6 +30,7 @@ const rootReducers = combineReducers({
   genreList: genreReducer,
   search: searchReducer,
   favouriteMovies: favouriteMoviesReducer,
+  movieDetails: movieDetailsReducer,
 });
 
 export interface IMainState {
@@ -37,6 +41,7 @@ export interface IMainState {
   genreList: IGenresState;
   search: ISearchState;
   favouriteMovies: IFavoritesState;
+  movieDetails: IMovieDetailsState;
 }
 
 export const store = configureStore({

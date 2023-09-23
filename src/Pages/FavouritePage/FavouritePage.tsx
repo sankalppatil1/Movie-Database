@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
-import NoMoviesCard from "../../components/atoms/NoMoviesCard/NoMoviesCard";
+import NoMoviesCard from "../../components/atoms/NoDataCard/NoDataCard";
 import MovieCard from "../../components/molecules/MovieCard/MovieCard";
 import {
   HOME_PAGE_TABS_DATA,

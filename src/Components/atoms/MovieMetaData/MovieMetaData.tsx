@@ -2,6 +2,7 @@ import { Box, Tooltip, Typography } from '@mui/material'
 import React from 'react'
 import StarRateIcon from "@mui/icons-material/StarRate";
 import { IMovie } from '../../../models/model';
+import { getFormattedDate } from '../../../Utility/Utilities';
 
 interface MovieMetaDataProps {
     movieData : IMovie
@@ -21,7 +22,7 @@ function MovieMetaData(props: MovieMetaDataProps) {
     <Tooltip
         title={tooltipEle}
         sx={{
-          zIndex: "2",
+          zIndex: "3",
         }}
       >
         <Box
@@ -79,7 +80,7 @@ function MovieMetaData(props: MovieMetaDataProps) {
                 mb: "5px",
               }}
             >
-              {movieData.release_date}
+              {getFormattedDate(movieData.release_date)}
             </Box>
             <Box sx={{ display: "flex", columnGap: "10px" }}>
               <StarRateIcon
