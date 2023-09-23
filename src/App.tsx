@@ -12,6 +12,7 @@ import NowPlayingMoviesPage from "./pages/NowPlayingMoviesPage/NowPlayingMoviesP
 import UpcomingMoviesPage from "./pages/UpcomingMoviesPage/UpcomingMoviesPage";
 import { ResetScroll } from "./components/molecules/ResetScroll/ResetScroll";
 import SearchPage from "./pages/SearchPage/SearchPage";
+import FavouritePage from "./pages/FavouritePage/FavouritePage";
 
 function App() {
   return (
@@ -41,6 +42,10 @@ function App() {
                 <Route
                   path={ROUTE_CONSTANTS.SEARCH}
                   element={<SearchPage />}
+                />
+                <Route
+                  path={ROUTE_CONSTANTS.FAVOURITE}
+                  element={<FavouritePage />}
                 />
               </Route>
             </Routes>

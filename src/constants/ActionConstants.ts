@@ -42,3 +42,8 @@ export enum UpcomingMoviesActionTypes {
     SET_SEARCH_PAGE = 'SET_SEARCH_PAGE',
     CLEAR_SEARCH_PAGE = 'CLEAR_SEARCH_PAGE',
   }
+
+  export enum FavouriteActionTypes {
+    SAVE_FAVORITE_MOVIE = 'SAVE_FAVORITE_MOVIE',
+    DELETE_FAVORITE_MOVIE = 'DELETE_FAVORITE_MOVIE',
+  }

@@ -1,9 +1,9 @@
-import { Box, Skeleton, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import NoMoviesCard from "../../components/atoms/NoMoviesCard/NoMoviesCard";
 import InfiniteScroller from "../../components/molecules/InfiniteScroller/InfiniteScroller";
-import SkeletonLoader from "../../components/molecules/SkeletonLoader/SkeletonLoader";
+import SkeletonLoader from "../../components/atoms/SkeletonLoader/SkeletonLoader";
 import { API_STATES, MOVIE_CARD_WIDTH } from "../../constants/AppConstants";
 import { IMovie, ISearch } from "../../models/model";
 import { fetchMovieGenresStart } from "../../store/genres/actions";

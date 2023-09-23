@@ -1,4 +1,4 @@
-import { IGenre } from "../models/model";
+import { IGenre, IMovie } from "../models/model";
 
 export const getFormattedGenreList = (
   idList: number[],
@@ -11,5 +11,9 @@ export const getFormattedGenreList = (
     }
   });
   return genreListFormatted.join(", ");
+};
+
+export const isFavorite = (favoriteMovies: IMovie[], id: number) => {
+  return favoriteMovies && favoriteMovies.findIndex((movie: IMovie) => movie.id === id) !== -1;
 };
 
