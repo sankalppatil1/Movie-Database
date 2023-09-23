@@ -11,11 +11,11 @@ interface MovieCarouselProps {
 }
 
 function MovieCarousel(props: MovieCarouselProps) {
-    const {movieData} = props
+    const {movieData, headerDetails} = props
   return (
     <>
       <HeaderLink
-        headerDetails={{ title: "NOW PLAYING", viewMoreLink: "/now-playing" }}
+        headerDetails={headerDetails}
       />
       <Carousel>
         {movieData.map((data) => (

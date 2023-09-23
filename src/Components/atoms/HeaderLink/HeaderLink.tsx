@@ -9,18 +9,27 @@ interface HeaderLinkProps {
 function HeaderLink(props: HeaderLinkProps) {
   const { headerDetails } = props;
   return (
-    <Box sx={{
-        display: 'flex',
-        justifyContent: 'flex-start',
-        padding: '10px'
-
-    }}>
-      <Typography>{headerDetails.title}</Typography>{" "}
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "flex-start",
+        padding: "10px",
+        alignItems: 'center',
+      }}
+    >
+      <Typography sx={{borderBottom: '2px solid yellow'}}>{headerDetails.title}</Typography>{" "}
       <Link
         to={headerDetails.viewMoreLink}
-        style={{ textDecoration: "none", textTransform: "uppercase", color: 'yellow', marginInlineStart: '20px' }}
+        style={{
+          textDecoration: "none",
+          textTransform: "uppercase",
+          color: "yellow",
+          marginInlineStart: "20px",
+          fontFamily: "Roboto,Helvetica,Arial,sans-serif",
+          fontSize: '12px',
+        }}
       >
-        VIEW MORE
+        VIEW MORE ...
       </Link>
     </Box>
   );

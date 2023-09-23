@@ -21,8 +21,19 @@ export default class TMDb {
       `${this.API_BASE}movie/now_playing?api_key=${this.TMDB_API_KEY}&language=${this.API_LANGUAGE}&page=${page}`
     );
   };
-
-  // public getMovieImages = async (imageId: string): Promise<IImages> => {
-  //   return this.fetchJSON(`${this.API_IMAGE_PATH}/${imageId}`);
-  // };
+  public getPopularMovies = async (page = 1): Promise<ISearch<IMovie>> => {
+    return this.fetchJSON(
+      `${this.API_BASE}movie/popular?api_key=${this.TMDB_API_KEY}&language=${this.API_LANGUAGE}&page=${page}`
+    );
+  };
+  public getTopRatedMovies = async (page = 1): Promise<ISearch<IMovie>> => {
+    return this.fetchJSON(
+      `${this.API_BASE}movie/top_rated?api_key=${this.TMDB_API_KEY}&language=${this.API_LANGUAGE}&page=${page}`
+    );
+  };
+  public getUpcomingMovies = async (page = 1): Promise<ISearch<IMovie>> => {
+    return this.fetchJSON(
+      `${this.API_BASE}movie/upcoming?api_key=${this.TMDB_API_KEY}&language=${this.API_LANGUAGE}&page=${page}`
+    );
+  };
 }

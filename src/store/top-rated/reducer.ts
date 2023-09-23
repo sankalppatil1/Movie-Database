@@ -1,30 +1,30 @@
-import { NowPlayingMoviesActionTypes } from '../../constants/ActionConstants';
+import { TopRatedMoviesActionTypes } from '../../constants/ActionConstants';
 import { API_STATES } from '../../constants/AppConstants';
 import { IMovie, ISearch } from '../../models/model';
 
-export interface INowPlayingMoviesState {
+export interface ITopRatedMoviesState {
   movies: ISearch<IMovie> | null;
   apiState: API_STATES | null;
   searchPage: number;
 }
 
-const initialState: INowPlayingMoviesState = {
+const initialState: ITopRatedMoviesState = {
   movies: null,
   apiState: null,
   searchPage: 1,
 };
 
 function reducer(
-  state: INowPlayingMoviesState = initialState,
+  state: ITopRatedMoviesState = initialState,
   action: {type: string, payload?: any}
-): INowPlayingMoviesState {
+): ITopRatedMoviesState {
   switch (action.type) {
-    case NowPlayingMoviesActionTypes.GET_NOW_PLAYING_MOVIES:
+    case TopRatedMoviesActionTypes.GET_TOP_RATED_MOVIES:
       return {
         ...state,
         apiState: API_STATES.LOADING,
       };
-    case NowPlayingMoviesActionTypes.NOW_PLAYING_MOVIES_SUCCESS:
+    case TopRatedMoviesActionTypes.TOP_RATED_MOVIES_SUCCESS:
       const { shouldConcat } = action.payload;
 
       if (shouldConcat && state.movies) {
@@ -43,12 +43,12 @@ function reducer(
         movies: action.payload.movies,
         apiState: API_STATES.SUCCESS,
       };
-    case NowPlayingMoviesActionTypes.NOW_PLAYING_MOVIES_FAILED:
+    case TopRatedMoviesActionTypes.TOP_RATED_MOVIES_FAILED:
       return {
         ...state,
         apiState: API_STATES.FAILED,
       };
-    case NowPlayingMoviesActionTypes.SET_NOW_PLAYING_SEARCH_PAGE:
+    case TopRatedMoviesActionTypes.SET_TOP_RATED_SEARCH_PAGE:
       return {
         ...state,
         searchPage: action.payload,

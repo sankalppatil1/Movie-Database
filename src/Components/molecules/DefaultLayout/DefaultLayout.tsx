@@ -10,7 +10,6 @@ function DefaultLayout() {
       <Box>
         <Outlet />
       </Box>
-      <Box>Footer</Box>
     </>
   );
 }

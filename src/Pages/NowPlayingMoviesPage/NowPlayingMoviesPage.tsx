@@ -1,15 +1,14 @@
-import { Box } from "@mui/material";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import InfiniteScroller from "../../components/molecules/InfiniteScroller/InfiniteScroller";
-import { API_STATES, MOVIE_CARD_WIDTH } from "../../constants/AppConstants";
+import { API_STATES, HOME_PAGE_TABS_DATA } from "../../constants/AppConstants";
 import {
   fetchNowPlayingMoviesStart,
   setNowPlayingSearchPage,
 } from "../../store/now-playing/actions";
 import { IMainState } from "../../store/store";
+import CategoryPage from "../CategoryPage/CategoryPage";
 
-function NowPlayingPage() {
+function NowPlayingMoviesPage() {
   const { apiState, searchPage, movies } = useSelector(
     (state: IMainState) => state.nowPlayingMovies
   );
@@ -28,22 +27,9 @@ function NowPlayingPage() {
     }
   };
 
-  const noDataComponent =
-    apiState === API_STATES.LOADING ? (
-      <Box>Loading...</Box>
-    ) : (
-      <Box>No Movies to display...</Box>
-    );
-
-  return movies?.results.length ? (
-    <InfiniteScroller
-      fetchData={fetchMoreNowPlayingMovies}
-      movieData={movies?.results}
-      cardWidthInPx={MOVIE_CARD_WIDTH.CATEGORY_PAGE}
-    ></InfiniteScroller>
-  ) : (
-    noDataComponent
+  return (
+      <CategoryPage fetchData={fetchMoreNowPlayingMovies} movies={movies} apiState={apiState} category={HOME_PAGE_TABS_DATA.NOW_PLAYING.title}/>
   );
 }
 
-export default NowPlayingPage;
+export default NowPlayingMoviesPage;

@@ -28,7 +28,9 @@ function MovieCard(props: MovieCardProps) {
         src={`${API_IMAGE_PATH}${movieData.poster_path}`}
         alt={movieData.title}
       />
-      <Tooltip title={movieData.title}>
+      <Tooltip title={movieData.title} sx={{
+        zIndex:'2'
+      }}>
         <Box
           sx={{
             display: "flex",
@@ -48,20 +50,6 @@ function MovieCard(props: MovieCardProps) {
               width: "80%",
             }}
           >
-            <Box sx={{display:'flex', columnGap: '10px'}}>
-              <StarRateIcon
-                sx={{
-                  fontSize: "20px",
-                }}
-              />
-            <Typography
-              sx={{
-                fontSize: "15px",
-              }}
-            >
-              {movieData.vote_average}/10 ({movieData.vote_count})
-            </Typography>
-            </Box>
             <Box>
               <Typography
                 sx={{
@@ -74,6 +62,21 @@ function MovieCard(props: MovieCardProps) {
                 }}
               >
                 {movieData.title}
+              </Typography>
+            </Box>
+            <Box sx={{ display: "flex", columnGap: "10px" }}>
+              <StarRateIcon
+                sx={{
+                  fontSize: "20px",
+                  color: 'yellow'
+                }}
+              />
+              <Typography
+                sx={{
+                  fontSize: "15px",
+                }}
+              >
+                {movieData.vote_average}/10 ({movieData.vote_count})
               </Typography>
             </Box>
           </Box>

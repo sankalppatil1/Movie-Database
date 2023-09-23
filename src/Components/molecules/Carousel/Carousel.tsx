@@ -12,13 +12,20 @@ export interface CarouselInterface {
 const Carousel = ({
   children,
   scrollWidthWeb = 200,
-  scrollWidthMobile = 200,
+  scrollWidthMobile = 300,
 }: CarouselInterface) => {
   const carouselEl = useRef(null);
   const arrowStyles = {
-    width: "24px",
-    height: "24px",
-    verticalAlign: "middle",
+    opacity: 0.7,
+    height: "50%",
+    backgroundColor: "black",
+    borderRadius: "8px",
+    border: "1px solid yellow",
+    "&.MuiSvgIcon-root": {
+      ">path": {
+        fill: `yellow`,
+      },
+    },
   };
 
   const scrollHandler = (isLeftScroll: boolean) => {
@@ -32,7 +39,7 @@ const Carousel = ({
   };
 
   return (
-    <>
+    <Box sx={{ position: "relative", display: "flex", alignItems: "center" }}>
       <Box
         sx={(theme) => ({
           display: "flex",
@@ -57,11 +64,13 @@ const Carousel = ({
       <Box
         sx={(theme) => ({
           width: "100%",
-          maxWidth: "1180px",
           display: "flex",
           gap: "32px",
-          justifyContent: "start",
           cursor: "pointer",
+          position: "absolute",
+          justifyContent: "space-between",
+          height: "50%",
+          alignItems: "center",
         })}
       >
         <SvgIcon
@@ -69,11 +78,6 @@ const Carousel = ({
           onClick={scrollHandler.bind(null, true)}
           sx={{
             ...arrowStyles,
-            "&.MuiSvgIcon-root": {
-              ">path": {
-                fill: `yellow`,
-              },
-            },
           }}
           component={ArrowBack}
         />
@@ -82,16 +86,11 @@ const Carousel = ({
           onClick={scrollHandler.bind(null, false)}
           sx={{
             ...arrowStyles,
-            "&.MuiSvgIcon-root": {
-              ">path": {
-                fill: `yellow`,
-              },
-            },
           }}
           component={ArrowForward}
         />
       </Box>
-    </>
+    </Box>
   );
 };
 export default Carousel;
