@@ -1,6 +1,6 @@
 import { PopularMoviesActionTypes } from '../../constants/ActionConstants';
 import { API_STATES } from '../../constants/AppConstants';
-import { IMovie, ISearch } from '../../models/model';
+import { ActionType, IMovie, ISearch } from '../../models/model';
 
 export interface IPopularMoviesState {
   movies: ISearch<IMovie> | null;
@@ -16,7 +16,7 @@ const initialState: IPopularMoviesState = {
 
 function reducer(
   state: IPopularMoviesState = initialState,
-  action: {type: string, payload?: any}
+  action: ActionType
 ): IPopularMoviesState {
   switch (action.type) {
     case PopularMoviesActionTypes.GET_POPULAR_MOVIES:

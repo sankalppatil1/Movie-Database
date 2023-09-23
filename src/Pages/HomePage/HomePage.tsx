@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import MovieCarousel from "../../components/molecules/MovieCarousel/MovieCarousel";
 import { HOME_PAGE_TABS_DATA } from "../../constants/AppConstants";
 import { IMovie } from "../../models/model";
+import { fetchMovieGenresStart } from "../../store/genres/actions";
 import { fetchNowPlayingMoviesStart } from "../../store/now-playing/actions";
 import { fetchPopularMoviesStart } from "../../store/popular/actions";
 import { IMainState } from "../../store/store";
@@ -26,24 +27,13 @@ function HomePage() {
   );
 
   useEffect(() => {
-    if (!nowPlayingMovies?.length) {
-      dispatch(fetchNowPlayingMoviesStart());
-    }
-    if (!popularMovies?.length) {
-      dispatch(fetchPopularMoviesStart());
-    }
-    if (!topRatedMovies?.length) {
-      dispatch(fetchTopRatedMoviesStart());
-    }
-    if (!upcomingMovies?.length) {
-      dispatch(fetchUpcomingMoviesStart());
-    }
+    dispatch(fetchNowPlayingMoviesStart());
+    dispatch(fetchPopularMoviesStart());
+    dispatch(fetchTopRatedMoviesStart());
+    dispatch(fetchUpcomingMoviesStart());
+    dispatch(fetchMovieGenresStart());
   }, [
-    dispatch,
-    nowPlayingMovies,
-    popularMovies,
-    topRatedMovies,
-    upcomingMovies,
+    dispatch
   ]);
 
   return (

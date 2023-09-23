@@ -1,13 +1,14 @@
 import { all, call, debounce, put, takeLatest } from "redux-saga/effects";
 import { TopRatedMoviesActionTypes } from "../../constants/ActionConstants";
+import { ActionType } from "../../models/model";
 
-import TMDbService from "../../services/service";
+import ApiService from "../../services/service";
 import {
   fetchTopRatedMoviesFailure,
   fetchTopRatedMoviesSuccess,
 } from "./actions";
 
-const API = new TMDbService();
+const API = new ApiService();
 
 function* saveTopRatedMovies(page = 1, shouldConcat = false): any {
   try {
@@ -23,11 +24,11 @@ function* saveTopRatedMovies(page = 1, shouldConcat = false): any {
   }
 }
 
-function* fetchTopRatedMoviesSaga(action: {type: string, payload?: any}) {
+function* fetchTopRatedMoviesSaga(action: ActionType) {
   yield saveTopRatedMovies(1, false);
 }
 
-function* fetchTopRatedMoviesWithPageSaga(action: {type: string, payload?: any}) {
+function* fetchTopRatedMoviesWithPageSaga(action: ActionType) {
   const page = action.payload;
 
   yield saveTopRatedMovies(page, true);

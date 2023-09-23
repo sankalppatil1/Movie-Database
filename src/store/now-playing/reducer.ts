@@ -1,6 +1,6 @@
 import { NowPlayingMoviesActionTypes } from '../../constants/ActionConstants';
 import { API_STATES } from '../../constants/AppConstants';
-import { IMovie, ISearch } from '../../models/model';
+import { ActionType, IMovie, ISearch } from '../../models/model';
 
 export interface INowPlayingMoviesState {
   movies: ISearch<IMovie> | null;
@@ -16,7 +16,7 @@ const initialState: INowPlayingMoviesState = {
 
 function reducer(
   state: INowPlayingMoviesState = initialState,
-  action: {type: string, payload?: any}
+  action: ActionType
 ): INowPlayingMoviesState {
   switch (action.type) {
     case NowPlayingMoviesActionTypes.GET_NOW_PLAYING_MOVIES:

@@ -1,4 +1,5 @@
 import { all } from 'redux-saga/effects';
+import { genreSaga } from './genres/saga';
 import { nowPlayingMoviesSaga } from './now-playing/saga';
 import { popularMoviesSaga } from './popular/saga';
 import { topRatedMoviesSaga } from './top-rated/saga';
@@ -9,6 +10,7 @@ export default function* rootSaga() {
     nowPlayingMoviesSaga(),
     popularMoviesSaga(),
     topRatedMoviesSaga(),
-    upcomingMoviesSaga()
+    upcomingMoviesSaga(),
+    genreSaga(),
   ]);
 }

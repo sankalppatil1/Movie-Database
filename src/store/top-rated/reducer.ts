@@ -1,6 +1,6 @@
 import { TopRatedMoviesActionTypes } from '../../constants/ActionConstants';
 import { API_STATES } from '../../constants/AppConstants';
-import { IMovie, ISearch } from '../../models/model';
+import { ActionType, IMovie, ISearch } from '../../models/model';
 
 export interface ITopRatedMoviesState {
   movies: ISearch<IMovie> | null;
@@ -16,7 +16,7 @@ const initialState: ITopRatedMoviesState = {
 
 function reducer(
   state: ITopRatedMoviesState = initialState,
-  action: {type: string, payload?: any}
+  action: ActionType
 ): ITopRatedMoviesState {
   switch (action.type) {
     case TopRatedMoviesActionTypes.GET_TOP_RATED_MOVIES:

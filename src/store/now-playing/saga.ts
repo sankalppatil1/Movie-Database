@@ -1,13 +1,14 @@
 import { all, call, debounce, put, takeLatest } from "redux-saga/effects";
 import { NowPlayingMoviesActionTypes } from "../../constants/ActionConstants";
+import { ActionType } from "../../models/model";
 
-import TMDbService from "../../services/service";
+import ApiService from "../../services/service";
 import {
   fetchNowPlayingMoviesFailure,
   fetchNowPlayingMoviesSuccess,
 } from "./actions";
 
-const API = new TMDbService();
+const API = new ApiService();
 
 function* saveNowPlayingMovies(page = 1, shouldConcat = false): any {
   try {
@@ -23,11 +24,11 @@ function* saveNowPlayingMovies(page = 1, shouldConcat = false): any {
   }
 }
 
-function* fetchNowPlayingMoviesSaga(action: {type: string, payload?: any}) {
+function* fetchNowPlayingMoviesSaga(action: ActionType) {
   yield saveNowPlayingMovies(1, false);
 }
 
-function* fetchNowPlayingMoviesWithPageSaga(action: {type: string, payload?: any}) {
+function* fetchNowPlayingMoviesWithPageSaga(action: ActionType) {
   const page = action.payload;
 
   yield saveNowPlayingMovies(page, true);

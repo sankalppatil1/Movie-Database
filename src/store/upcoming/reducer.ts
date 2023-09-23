@@ -1,6 +1,6 @@
 import { UpcomingMoviesActionTypes } from '../../constants/ActionConstants';
 import { API_STATES } from '../../constants/AppConstants';
-import { IMovie, ISearch } from '../../models/model';
+import { ActionType, IMovie, ISearch } from '../../models/model';
 
 export interface IUpcomingMoviesState {
   movies: ISearch<IMovie> | null;
@@ -16,7 +16,7 @@ const initialState: IUpcomingMoviesState = {
 
 function reducer(
   state: IUpcomingMoviesState = initialState,
-  action: {type: string, payload?: any}
+  action: ActionType
 ): IUpcomingMoviesState {
   switch (action.type) {
     case UpcomingMoviesActionTypes.GET_UPCOMING_MOVIES:
