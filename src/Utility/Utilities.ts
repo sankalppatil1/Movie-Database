@@ -10,5 +10,6 @@ export const getFormattedGenreList = (
       genreListFormatted.push(genre.name);
     }
   });
-  return genreListFormatted.join(', ');
+  return genreListFormatted.join(", ");
 };
+

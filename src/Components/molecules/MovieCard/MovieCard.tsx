@@ -94,6 +94,18 @@ function MovieCard(props: MovieCardProps) {
             >
               {genreListFormatted}
             </Box>
+            <Box
+              sx={{
+                overflow: "hidden",
+                whiteSpace: "nowrap",
+                textOverflow: "ellipsis",
+                width: "calc(90%)",
+                fontSize: "12px",
+                mb: "5px",
+              }}
+            >
+              {movieData.release_date}
+            </Box>
             <Box sx={{ display: "flex", columnGap: "10px" }}>
               <StarRateIcon
                 sx={{

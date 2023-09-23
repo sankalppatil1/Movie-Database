@@ -1,8 +1,13 @@
-import { Box, Typography } from "@mui/material";
-import React from "react";
+import { Box, Skeleton, Typography } from "@mui/material";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import NoMoviesCard from "../../components/atoms/NoMoviesCard/NoMoviesCard";
 import InfiniteScroller from "../../components/molecules/InfiniteScroller/InfiniteScroller";
+import SkeletonLoader from "../../components/molecules/SkeletonLoader/SkeletonLoader";
 import { API_STATES, MOVIE_CARD_WIDTH } from "../../constants/AppConstants";
 import { IMovie, ISearch } from "../../models/model";
+import { fetchMovieGenresStart } from "../../store/genres/actions";
+import { IMainState } from "../../store/store";
 
 interface CategoryPageProps {
   movies: ISearch<IMovie> | null;
@@ -13,12 +18,21 @@ interface CategoryPageProps {
 
 function CategoryPage(props: CategoryPageProps) {
   const { movies, fetchData, apiState, category } = props;
+  const dispatch = useDispatch();
+
+  const genreList = useSelector((state: IMainState) => state.genreList.genres);
+
+  useEffect(() => {
+    if (!genreList?.length) {
+      dispatch(fetchMovieGenresStart());
+    }
+  }, [dispatch, genreList]);
 
   const noDataComponent =
     apiState === API_STATES.LOADING ? (
-      <Box>Loading...</Box>
+      <SkeletonLoader carWidthInPx={MOVIE_CARD_WIDTH.CATEGORY_PAGE} />
     ) : (
-      <Box>No Movies to display...</Box>
+      <NoMoviesCard/>
     );
   return (
     <Box sx={{ marginTop: "20px" }}>

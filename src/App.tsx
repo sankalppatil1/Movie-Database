@@ -11,6 +11,7 @@ import PopularMoviesPage from "./pages/PopularMoviesPage/PopularMoviesPage";
 import NowPlayingMoviesPage from "./pages/NowPlayingMoviesPage/NowPlayingMoviesPage";
 import UpcomingMoviesPage from "./pages/UpcomingMoviesPage/UpcomingMoviesPage";
 import { ResetScroll } from "./components/molecules/ResetScroll/ResetScroll";
+import SearchPage from "./pages/SearchPage/SearchPage";
 
 function App() {
   return (
@@ -36,6 +37,10 @@ function App() {
                 <Route
                   path={ROUTE_CONSTANTS.UPCOMING}
                   element={<UpcomingMoviesPage />}
+                />
+                <Route
+                  path={ROUTE_CONSTANTS.SEARCH}
+                  element={<SearchPage />}
                 />
               </Route>
             </Routes>

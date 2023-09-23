@@ -40,4 +40,10 @@ export default class ApiService {
       `${this.API_BASE}genre/movie/list?api_key=${this.API_KEY}`
     );
   };
+
+  public getContentBySearchQuery = async (query: string, page = 1) => {
+    return this.fetchJSON(
+      `${this.API_BASE}search/movie?api_key=${this.API_KEY}&query=${query}&page=${page}`
+    );
+  };
 }
