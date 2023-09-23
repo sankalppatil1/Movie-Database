@@ -4,6 +4,7 @@ import Carousel from "../Carousel/Carousel";
 import HeaderLink from "../../atoms/HeaderLink/HeaderLink";
 import MovieCard from "../MovieCard/MovieCard";
 import { MOVIE_CARD_WIDTH } from "../../../constants/AppConstants";
+import { Box } from "@mui/material";
 
 interface MovieCarouselProps {
     movieData: IMovie[]
@@ -13,7 +14,7 @@ interface MovieCarouselProps {
 function MovieCarousel(props: MovieCarouselProps) {
     const {movieData, headerDetails} = props
   return (
-    <>
+    <Box sx={{margin: '20px 0px'}}>
       <HeaderLink
         headerDetails={headerDetails}
       />
@@ -22,7 +23,7 @@ function MovieCarousel(props: MovieCarouselProps) {
           <MovieCard key={data.id} movieData={data} cardWidthInPx={MOVIE_CARD_WIDTH.HOME_PAGE}/>
         ))}
       </Carousel>
-    </>
+    </Box>
   );
 }
 

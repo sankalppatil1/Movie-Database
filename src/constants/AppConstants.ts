@@ -6,7 +6,7 @@ export enum API_STATES {
 
 export const ROUTE_CONSTANTS = {
   NOW_PLAYING: "/now-playing",
-  POPULAR: '/popular"',
+  POPULAR: '/popular',
   TOP_RATED: "/top-rated",
   UPCOMING: "/upcoming",
   SEARCH: "/search",
@@ -19,7 +19,7 @@ export const HOME_PAGE_TABS_DATA = {
     title: "NOW PLAYING",
     viewMoreLink: ROUTE_CONSTANTS.NOW_PLAYING,
   },
-  POPULAR: { title: "POPULAR", viewMoreLink: ROUTE_CONSTANTS.POPULAR },
+  POPULAR: { title: "POPULAR", viewMoreLink: ROUTE_CONSTANTS.POPULAR},
   TOP_RATED: { title: "TOP RATED", viewMoreLink: ROUTE_CONSTANTS.TOP_RATED },
   UPCOMING: { title: "UPCOMING", viewMoreLink: ROUTE_CONSTANTS.UPCOMING },
   HOME: { title: "HOME", viewMoreLink: ROUTE_CONSTANTS.HOME },
