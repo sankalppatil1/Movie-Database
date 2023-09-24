@@ -86,9 +86,9 @@ function MovieIntro(props: MovieIntroProps) {
         <Typography variant={isDesktop ? "h2" : "h4"}>
           {movieDetails.title}
         </Typography>
-        <Typography variant="h6" sx={{ color: "yellow" }}>
+        {movieDetails.tagline && <Typography variant="h6" sx={{ color: "yellow" }}>
           ({movieDetails.tagline})
-        </Typography>
+        </Typography>}
         <Typography>{movieDetails.overview}</Typography>
         <Button
           onClick={favouriteBtnHandler}

@@ -39,7 +39,6 @@ function CategoryPage(props: CategoryPageProps) {
       <Typography
         sx={{
           fontSize: "18px",
-          marginInlineStart: "20px",
           borderBottom: "2px solid yellow",
           textTransform: "capitalize",
           display: "inline-block",

@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Theme, Typography, useMediaQuery, useTheme } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
 import NoMoviesCard from "../../components/atoms/NoDataCard/NoDataCard";
@@ -15,12 +15,15 @@ function FavouritePage() {
     (state: IMainState) => state.favouriteMovies.favoriteMovies
   );
 
+  const theme: Theme = useTheme();
+  const isDesktop = useMediaQuery(theme.breakpoints.up("sm"));
+
   const contentToDisplay = favoriteMovies?.length ? (
     <Box
       sx={{
         display: "flex",
         flexWrap: "wrap",
-        justifyContent: "space-evenly",
+        justifyContent: favoriteMovies.length > 2 && isDesktop ? 'space-between' : 'space-evenly' ,
         rowGap: "30px",
       }}
     >
@@ -40,7 +43,6 @@ function FavouritePage() {
       <Typography
         sx={{
           fontSize: "18px",
-          marginInlineStart: "20px",
           borderBottom: "2px solid yellow",
           textTransform: "capitalize",
           display: "inline-block",

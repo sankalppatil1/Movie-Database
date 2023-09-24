@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { Box, SvgIcon } from "@mui/material";
+import { Box, SvgIcon, Theme, useMediaQuery, useTheme } from "@mui/material";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
 
 export interface CarouselInterface {
@@ -15,6 +15,10 @@ const Carousel = ({
   scrollWidthMobile = 300,
 }: CarouselInterface) => {
   const carouselEl = useRef(null);
+
+  const theme: Theme = useTheme();
+  const isDesktop = useMediaQuery(theme.breakpoints.up("sm"));
+
   const arrowStyles = {
     position: "absolute",
     opacity: 0.7,
@@ -66,11 +70,12 @@ const Carousel = ({
         {children}
       </Box>
 
-      <SvgIcon
+      {isDesktop && <><SvgIcon
         inheritViewBox
         onClick={scrollHandler.bind(null, true)}
         sx={{
           ...arrowStyles,
+          left: '-24px'
         }}
         component={ArrowBack}
       />
@@ -79,10 +84,11 @@ const Carousel = ({
         onClick={scrollHandler.bind(null, false)}
         sx={{
           ...arrowStyles,
-          right: "0px",
+          right: "-24px",
         }}
         component={ArrowForward}
       />
+      </>}
     </Box>
   );
 };

@@ -7,7 +7,7 @@ function DefaultLayout() {
   return (
     <>
       <Header/>
-      <Box>
+      <Box sx={{margin: ['0 20px', '0 50px']}}>
         <Outlet />
       </Box>
     </>

@@ -37,7 +37,7 @@ function HomePage() {
   ]);
 
   return (
-    <Box sx={{ padding: "0 20px" }}>
+    <Box>
       {nowPlayingMovies?.length && (
         <MovieCarousel
           key={HOME_PAGE_TABS_DATA.NOW_PLAYING.title}

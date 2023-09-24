@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Theme, useMediaQuery, useTheme } from "@mui/material";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { IMovie } from "../../../models/model";
@@ -12,6 +12,10 @@ interface InfiniteScrollerProps {
 
 function InfiniteScroller(props: InfiniteScrollerProps) {
   const { fetchData, movieData, cardWidthInPx } = props;
+
+  const theme: Theme = useTheme();
+  const isDesktop = useMediaQuery(theme.breakpoints.up("sm"));
+
   return (
     <InfiniteScroll
       dataLength={movieData.length} //This is important field to render the next data
@@ -24,12 +28,12 @@ function InfiniteScroller(props: InfiniteScrollerProps) {
         </p>
       }
     >
-      <Box sx={{ display: "flex", flexWrap: 'wrap', justifyContent: 'space-evenly', rowGap: '30px' }}>
+      <Box sx={{ display: "flex", flexWrap: 'wrap', justifyContent: movieData.length > 2 && isDesktop ? 'space-between' : 'space-evenly', rowGap: '30px' }}>
         {movieData.map((data) => (
-          <MovieCard key={data.id} movieData={data} cardWidthInPx={cardWidthInPx}/>
+          <MovieCard key={data.id} movieData={data} cardWidthInPx={cardWidthInPx} />
         ))}
       </Box>
-    </InfiniteScroll>
+    </InfiniteScroll >
   );
 }
 
