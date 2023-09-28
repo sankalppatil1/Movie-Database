@@ -20,10 +20,10 @@ const Carousel = ({
   const isDesktop = useMediaQuery(theme.breakpoints.up("sm"));
 
   const arrowStyles = {
+    boxShadow: '-1px 0px 11px 3px rgba(222,222,214,0.47)',
     position: "absolute",
     opacity: 0.7,
     height: "30%",
-    boxShadow: "yellow",
     backgroundColor: "yellow",
     borderRadius: "8px",
     border: "1px solid black",
@@ -75,7 +75,7 @@ const Carousel = ({
         onClick={scrollHandler.bind(null, true)}
         sx={{
           ...arrowStyles,
-          left: '-24px'
+          left: '-12px'
         }}
         component={ArrowBack}
       />
@@ -84,7 +84,7 @@ const Carousel = ({
         onClick={scrollHandler.bind(null, false)}
         sx={{
           ...arrowStyles,
-          right: "-24px",
+          right: "-12px",
         }}
         component={ArrowForward}
       />
