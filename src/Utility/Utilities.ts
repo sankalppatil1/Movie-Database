@@ -2,14 +2,21 @@ import { IGenre, IMovie } from "../models/model";
 
 export const getFormattedGenreList = (
   idList: number[],
-  genreList: IGenre[]
+  genreList: IGenre[],
+  movieGenre?: IGenre[]
 ) => {
   let genreListFormatted: string[] = [];
-  genreList.forEach((genre: IGenre) => {
-    if (idList.includes(genre.id)) {
+  if (idList) {
+    genreList.forEach((genre: IGenre) => {
+      if (idList.includes(genre.id)) {
+        genreListFormatted.push(genre.name);
+      }
+    });
+  } else {
+    movieGenre?.forEach((genre: IGenre) => {
       genreListFormatted.push(genre.name);
-    }
-  });
+    });
+  }
   return genreListFormatted.join(", ");
 };
 
@@ -28,7 +35,7 @@ export const getFormattedDate = (dateString: string) => {
       month: "2-digit",
       day: "2-digit",
     }).format(date);
-  }else {
-    return ''
+  } else {
+    return "";
   }
 };

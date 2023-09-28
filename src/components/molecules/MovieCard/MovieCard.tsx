@@ -1,6 +1,6 @@
 import { Box, IconButton } from "@mui/material";
 import React, { BaseSyntheticEvent } from "react";
-import { IMovie } from "../../../models/model";
+import { IGenre, IMovie } from "../../../models/model";
 import { API_IMAGE_PATH } from "../../../services/service";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -19,10 +19,11 @@ import { ROUTE_CONSTANTS } from "../../../constants/AppConstants";
 interface MovieCardProps {
   movieData: IMovie;
   cardWidthInPx: number;
+  movieGenres?: IGenre[]
 }
 
 function MovieCard(props: MovieCardProps) {
-  const { movieData, cardWidthInPx } = props;
+  const { movieData, cardWidthInPx, movieGenres } = props;
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const genreList = useSelector((state: IMainState) => state.genreList.genres);
@@ -30,7 +31,7 @@ function MovieCard(props: MovieCardProps) {
     (state: IMainState) => state.favouriteMovies.favoriteMovies
   );
   const genreListFormatted = genreList
-    ? getFormattedGenreList(movieData.genre_ids, genreList)
+    ? getFormattedGenreList(movieData.genre_ids, genreList, movieGenres)
     : "";
   const isMovieFavorite = isFavorite(favouriteMovies, movieData.id);
   const favouriteBtnHandler = (event: BaseSyntheticEvent) => {
