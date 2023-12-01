@@ -24,14 +24,14 @@ const Carousel = ({
     position: "absolute",
     opacity: 0.7,
     height: "30%",
-    backgroundColor: "yellow",
+    backgroundColor: `${theme.palette.secondary.main}`,
     borderRadius: "8px",
-    border: "1px solid black",
+    border: `1px solid ${theme.palette.primary.main}`,
     zIndex: "3",
     cursor: "pointer",
     "&.MuiSvgIcon-root": {
       ">path": {
-        fill: `black`,
+        fill: `${theme.palette.primary.main}`,
       },
     },
   };
@@ -65,7 +65,6 @@ const Carousel = ({
           },
         })}
         ref={carouselEl}
-        id="carousel"
       >
         {children}
       </Box>

@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Theme, Typography, useTheme } from "@mui/material";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import NoMoviesCard from "../../components/atoms/NoDataCard/NoDataCard";
@@ -19,6 +19,7 @@ interface CategoryPageProps {
 function CategoryPage(props: CategoryPageProps) {
   const { movies, fetchData, apiState, category } = props;
   const dispatch = useDispatch();
+  const theme: Theme = useTheme()
 
   const genreList = useSelector((state: IMainState) => state.genreList.genres);
 
@@ -35,11 +36,11 @@ function CategoryPage(props: CategoryPageProps) {
       <NoMoviesCard/>
     );
   return (
-    <Box sx={{ marginTop: "20px" }}>
+    <Box sx={{ paddingTop: "20px" }}>
       <Typography
         sx={{
           fontSize: "18px",
-          borderBottom: "2px solid yellow",
+          borderBottom: `2px solid ${theme.palette.secondary.main}`,
           textTransform: "capitalize",
           display: "inline-block",
           marginBottom: "20px",

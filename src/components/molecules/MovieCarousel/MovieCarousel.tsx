@@ -14,7 +14,7 @@ interface MovieCarouselProps {
 function MovieCarousel(props: MovieCarouselProps) {
     const {movieData, headerDetails} = props
   return (
-    <Box sx={{margin: '20px 0px'}}>
+    <Box>
       <HeaderLink
         headerDetails={headerDetails}
       />

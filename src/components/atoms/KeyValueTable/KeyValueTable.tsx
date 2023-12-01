@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Theme, useTheme } from "@mui/material";
 import React from "react";
 
 interface KeyValueField {
@@ -9,6 +9,7 @@ interface KeyValueField {
 
 function KeyValueTable(props: { keyValueData: KeyValueField[] }) {
   const { keyValueData } = props;
+  const theme: Theme = useTheme()
   return (
     <Box
       sx={{
@@ -25,7 +26,7 @@ function KeyValueTable(props: { keyValueData: KeyValueField[] }) {
             <Box
               onClick={data.redirection ? data.redirection : undefined}
               sx={{
-                color: "yellow",
+                color: `${theme.palette.text.primary}`,
                 width: "80%",
                 cursor: data.redirection ? "pointer" : "initial",
                 textDecoration: data.redirection ? "underline" : "none",

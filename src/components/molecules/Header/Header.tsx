@@ -1,4 +1,4 @@
-import { Box, Button, Theme, Tooltip } from "@mui/material";
+import { Box, Button, Theme, Tooltip, useTheme } from "@mui/material";
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getHeaderTabsData } from "./Header.helper";
@@ -6,6 +6,7 @@ import { getHeaderTabsData } from "./Header.helper";
 function Header() {
   const navigate = useNavigate();
   const location = useLocation();
+  const theme: Theme = useTheme()
 
   return (
     <Box sx={{
@@ -19,8 +20,8 @@ function Header() {
       <Box
         sx={{
           display: "flex",
-          backgroundColor: "yellow",
-          color: "black",
+          backgroundColor: `${theme.palette.secondary.main}`,
+          color: `${theme.palette.primary.main}`,
           alignItems: "center",
           justifyContent: "center",
           borderRadius: '8px',
@@ -33,10 +34,10 @@ function Header() {
             sx={(theme: Theme) => ({
               textDecoration: "none",
               textTransform: "uppercase",
-              color: "black",
+              color: `${theme.palette.primary.main}`,
               alignItems: 'center',
               ...(tabData.isActive && {
-                backgroundColor: "black !important",
+                backgroundColor: `${theme.palette.primary.main} !important`,
               }),
               [theme.breakpoints.down("md")]: {
                 minWidth: "55px !important",
@@ -49,7 +50,7 @@ function Header() {
                 sx={{
                   fontSize: '20px',
                   ...(tabData.isActive && {
-                    color: "yellow !important",
+                    color: `${theme.palette.secondary.main} !important`,
                   }),
                   marginInlineEnd: "5px",
                 }}

@@ -46,15 +46,15 @@ function MovieIntro(props: MovieIntroProps) {
     favouriteBtnConfig = {
       text: "Remove from Favourites",
       icon: FavoriteIcon,
-      backGroundColor: "black !important",
-      color: "yellow !important",
+      backGroundColor: `${theme.palette.primary.main} !important`,
+      color: `${theme.palette.text.primary} !important`,
     };
   } else {
     favouriteBtnConfig = {
       text: "Add to Favourites",
       icon: FavoriteBorderIcon,
-      backGroundColor: "yellow !important",
-      color: "black !important",
+      backGroundColor: `${theme.palette.secondary.main} !important`,
+      color: `${theme.palette.primary.main} !important`,
     };
   }
 
@@ -86,14 +86,14 @@ function MovieIntro(props: MovieIntroProps) {
         <Typography variant={isDesktop ? "h2" : "h4"}>
           {movieDetails.title}
         </Typography>
-        {movieDetails.tagline && <Typography variant="h6" sx={{ color: "yellow" }}>
+        {movieDetails.tagline && <Typography variant="h6" sx={{ color: `${theme.palette.text.primary}` }}>
           ({movieDetails.tagline})
         </Typography>}
         <Typography>{movieDetails.overview}</Typography>
         <Button
           onClick={favouriteBtnHandler}
           sx={{
-            border: "1px solid yellow",
+            border: `1px solid ${theme.palette.secondary.main}`,
             width: "fit-content",
             mt: "20px",
             backgroundColor: favouriteBtnConfig.backGroundColor,

@@ -1,4 +1,4 @@
-import { Box, IconButton } from "@mui/material";
+import { Box, IconButton, Theme, useTheme } from "@mui/material";
 import React, { BaseSyntheticEvent } from "react";
 import { IGenre, IMovie } from "../../../models/model";
 import { API_IMAGE_PATH } from "../../../services/service";
@@ -26,6 +26,7 @@ function MovieCard(props: MovieCardProps) {
   const { movieData, cardWidthInPx, movieGenres } = props;
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const theme: Theme = useTheme()
   const genreList = useSelector((state: IMainState) => state.genreList.genres);
   const favouriteMovies = useSelector(
     (state: IMainState) => state.favouriteMovies.favoriteMovies
@@ -51,6 +52,9 @@ function MovieCard(props: MovieCardProps) {
         position: "relative",
         zIndex: "2",
         cursor: 'pointer',
+        '&:hover:': {
+          border: `1px solid ${theme.palette.secondary.main}`,
+        }
       }}
       onClick={() =>
         navigate(`${ROUTE_CONSTANTS.MOVIE_DETAILS}/${movieData.id}`)
@@ -72,7 +76,7 @@ function MovieCard(props: MovieCardProps) {
       <IconButton
         sx={{
           position: "absolute",
-          color: "yellow",
+          color: `${theme.palette.text.primary}`,
           right: "0px",
           zIndex: "4",
         }}

@@ -1,4 +1,4 @@
-import { Box, Divider } from "@mui/material";
+import { Box, Divider, Theme, useTheme } from "@mui/material";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -15,6 +15,8 @@ import MovieIntro from "../../components/molecules/MovieIntro/MovieIntro";
 
 function MovieDetailsPage() {
   const params = useParams();
+
+  const theme: Theme = useTheme()
   const dispatch = useDispatch();
 
   const movieDetails = useSelector(
@@ -47,7 +49,7 @@ function MovieDetailsPage() {
       <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
         <Divider
           sx={{
-            backgroundColor: "yellow",
+            backgroundColor: theme.palette.secondary.main,
             width: ["100%", "80%"],
           }}
         ></Divider>

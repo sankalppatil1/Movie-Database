@@ -37,7 +37,7 @@ function HomePage() {
   ]);
 
   return (
-    <Box>
+    <Box sx={{display: 'flex', flexDirection: 'column', rowGap: '20px', padding: '20px 0px'}}>
       {nowPlayingMovies?.length && (
         <MovieCarousel
           key={HOME_PAGE_TABS_DATA.NOW_PLAYING.title}

@@ -1,4 +1,4 @@
-import { Box, Tooltip, Typography } from '@mui/material'
+import { Box, Theme, Tooltip, Typography, useTheme } from '@mui/material'
 import React from 'react'
 import StarRateIcon from "@mui/icons-material/StarRate";
 import { IMovie } from '../../../models/model';
@@ -10,6 +10,8 @@ interface MovieMetaDataProps {
 }
 function MovieMetaData(props: MovieMetaDataProps) {
     const {movieData, genreListFormatted}= props
+
+    const theme: Theme = useTheme()
 
     const tooltipEle = (
         <Box>
@@ -28,7 +30,7 @@ function MovieMetaData(props: MovieMetaDataProps) {
         <Box
           sx={{
             display: "flex",
-            backgroundColor: "black",
+            backgroundColor: `${theme.palette.primary.main}`,
             position: "absolute",
             top: "0%",
             opacity: "0.8",
@@ -65,7 +67,7 @@ function MovieMetaData(props: MovieMetaDataProps) {
                 width: "calc(90%)",
                 fontSize: "12px",
                 mb: "5px",
-                color: "yellow",
+                color: `${theme.palette.text.primary}`,
               }}
             >
               {genreListFormatted}
@@ -86,7 +88,7 @@ function MovieMetaData(props: MovieMetaDataProps) {
               <StarRateIcon
                 sx={{
                   fontSize: "20px",
-                  color: "yellow",
+                  color: `${theme.palette.text.primary}`,
                 }}
               />
               <Typography
@@ -94,7 +96,7 @@ function MovieMetaData(props: MovieMetaDataProps) {
                   fontSize: "15px",
                 }}
               >
-                {movieData.vote_average}/10 ({movieData.vote_count})
+                {movieData.vote_average.toFixed(1)} ({movieData.vote_count})
               </Typography>
             </Box>
           </Box>
