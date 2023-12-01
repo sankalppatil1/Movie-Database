@@ -14,10 +14,10 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## Screenshots
 
-![Dark mode](https://rb.gy/v21ahs)
+![Dark mode](./screenshots/DarkMode.png)
 
 
-![Light mode](https://rb.gy/s3htvq)
+![Light mode](./screenshots/LightMode.png)
 
 
 
