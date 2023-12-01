@@ -1,4 +1,4 @@
-import { InputBase } from "@mui/material";
+import { InputBase, Theme, useTheme } from "@mui/material";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { API_STATES, HOME_PAGE_TABS_DATA } from "../../constants/AppConstants";
@@ -8,6 +8,7 @@ import CategoryPage from "../CategoryPage/CategoryPage";
 
 function SearchPage() {
 
+  const theme: Theme = useTheme()
   const dispatch = useDispatch()
   const apiState = useSelector((state: IMainState)=> state.search.fetchStatus)
   const movies = useSelector((state: IMainState)=> state.search.searchResult)
@@ -32,8 +33,8 @@ function SearchPage() {
             width: "60%",
             height: "50px",
             padding: "5px",
-            border: "2px solid yellow",
-            color: "yellow",
+            border: `2px solid ${theme.palette.secondary.main}`,
+            color: theme.palette.secondary.main,
           },
         }}
       />

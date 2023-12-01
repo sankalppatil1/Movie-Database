@@ -43,7 +43,7 @@ function FavouritePage() {
       <Typography
         sx={{
           fontSize: "18px",
-          borderBottom: "2px solid yellow",
+          borderBottom: `2px solid ${theme.palette.secondary.main}`,
           textTransform: "capitalize",
           display: "inline-block",
           marginBottom: "20px",
