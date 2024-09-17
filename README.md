@@ -12,11 +12,6 @@ A simple movie database application built using Typescript, React and Redux.
 
 ## Installation
 
-Clone this repository:
-```sh
-git clone https://github.com/sankalppatil1/Movie-Database.git
-```
-
 Install the dependencies and devDependencies and start the server.
 
 ```sh
